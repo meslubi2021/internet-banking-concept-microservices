@@ -135,6 +135,9 @@ services:
       javatodev_ib_network:
         ipv4_address: 172.25.0.2
 
+networks:
+  javatodev_ib_network:
+
 volumes:
   postgres_data:
   mysqldata:
