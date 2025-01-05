@@ -1,0 +1,41 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UseJavaVersion@1
+  inputs:
+    versionSpec: '11'
+
+- script: |
+    chmod +x mvnw
+    ./mvnw clean install -DskipTests=true
+  displayName: 'Maven Clean Install'
+
+# Add more steps for your specific build, test, and deployment process below:
+
+# Example: Docker build and push
+# - script: |
+#     docker build -t your-image-name .
+#     docker push your-image-name
+#   displayName: 'Docker Build and Push'
+
+# Example: Kubernetes deployment
+# - script: |
+#     kubectl apply -f your-deployment-file.yaml
+#   displayName: 'Kubernetes Deployment'
+
+# Example: Database setup
+# - script: |
+#     # Add your database setup commands here
+#   displayName: 'Database Setup'
+
+# You can add more steps as needed for your project's requirements
